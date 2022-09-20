@@ -22,15 +22,15 @@ object. In any case, Ray Tune will try to start a placement group for each trial
 .. code-block:: python
 
     # If you have 4 CPUs on your machine, this will run 2 concurrent trials at a time.
-    tuner = tune.Tuner(tune.with_resources(trainable, {"cpu": 2}, tune_config=tune.TuneConfig(num_samples=10))
+    tuner = tune.Tuner(tune.with_resources(trainable, {"cpu": 2}), tune_config=tune.TuneConfig(num_samples=10))
     results = tuner.fit()
 
     # If you have 4 CPUs on your machine, this will run 1 trial at a time.
-    tuner = tune.Tuner(tune.with_resources(trainable, {"cpu": 4}, tune_config=tune.TuneConfig(num_samples=10))
+    tuner = tune.Tuner(tune.with_resources(trainable, {"cpu": 4}), tune_config=tune.TuneConfig(num_samples=10))
     results = tuner.fit()
 
     # Fractional values are also supported, (i.e., {"cpu": 0.5}).
-    tuner = tune.Tuner(tune.with_resources(trainable, {"cpu": 0.5}, tune_config=tune.TuneConfig(num_samples=10))
+    tuner = tune.Tuner(tune.with_resources(trainable, {"cpu": 0.5}), tune_config=tune.TuneConfig(num_samples=10))
     results = tuner.fit()
 
 
@@ -63,11 +63,11 @@ This will automatically set ``CUDA_VISIBLE_DEVICES`` for each trial.
 .. code-block:: python
 
     # If you have 8 GPUs, this will run 8 trials at once.
-    tuner = tune.Tuner(tune.with_resources(trainable, {"gpu": 1}, tune_config=tune.TuneConfig(num_samples=10))
+    tuner = tune.Tuner(tune.with_resources(trainable, {"gpu": 1}), tune_config=tune.TuneConfig(num_samples=10))
     results = tuner.fit()
 
     # If you have 4 CPUs on your machine and 1 GPU, this will run 1 trial at a time.
-    tuner = tune.Tuner(tune.with_resources(trainable, {"cpu": 2, "gpu": 1}, tune_config=tune.TuneConfig(num_samples=10))
+    tuner = tune.Tuner(tune.with_resources(trainable, {"cpu": 2, "gpu": 1}), tune_config=tune.TuneConfig(num_samples=10))
     results = tuner.fit()
 
 You can find an example of this in the :doc:`Keras MNIST example </tune/examples/tune_mnist_keras>`.
